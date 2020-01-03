@@ -7,30 +7,33 @@ class PhoneForm extends React.Component {
   }
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
-      // [e.target.name] Computed property names 
+      [e.target.name] : e.target.value
     })
   }
-  handelSubmit = (e) => {
-    // 페이지 로딩 방지
+  handleSubmit = (e) => {
     e.preventDefault();
-    // 상태값을 onCreate를 통해 부모에게 전달
-    this.props.onCreate(this.state)
-    // 상태값 초기화
-    this.setState({
-      name: '',
-      phone: ''
-    })
+
+    if(this.state.name == ''){
+      alert('이름을 입력하세요')
+    }else if(this.state.phone == '') {
+      alert('휴대폰 번호를 입력하세요')
+    }else{
+      this.props.onCreate(this.state);
+      this.setState({
+        name: '',
+        phone: ''
+      })
+    }
   }
   render(){
-    return (
-      <form onSubmit={this.handelSubmit}>
+    return(
+      <form onSubmit={this.handleSubmit}>
         <input 
           type="text"
           name="name"
           value={this.state.name}
           onChange={this.handleChange}
-          placeholder="이름" 
+          placeholder='이름'
         />
         <input 
           type="text"
@@ -39,11 +42,11 @@ class PhoneForm extends React.Component {
           onChange={this.handleChange}
           placeholder="휴대폰 번호"
         />
-        <button type="submit">등록</button>
         <div>{this.state.name} {this.state.phone}</div>
+        <button type="submit">등록</button>
       </form>
     )
   }
 }
 
-export default PhoneForm;
+export default PhoneForm
