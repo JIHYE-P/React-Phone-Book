@@ -20,7 +20,7 @@ class PhoneForm extends Component {
   }
   render(){
     return <React.Fragment>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='phoneForm'>
         <input 
           type='text'
           name='name'

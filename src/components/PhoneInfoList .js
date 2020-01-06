@@ -1,14 +1,14 @@
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
 import PhoneInfo from './PhoneInfo';
 
 class PhoneInfoList extends Component {
   static defaultProps = {
-    list: [],
+    data: [],
     onRemove: () => console.warn('onRemove not defined'),
-    onUpdate: () => console.warn('onUpdate not defined')
-  }
+    onUpdate: () => console.warn('onUpdate not defined'),
+  }  
   render(){
-    const {data, onRemove, onUpdate} = this.props;
+    const {data, onRemove, onUpdate} = this.props
     const list = data.map(
       info => (
         <PhoneInfo 
@@ -19,9 +19,9 @@ class PhoneInfoList extends Component {
         />
       )
     )
-    return <React.Fragment>
+    return <div>
       {list}
-    </React.Fragment>
+    </div>
   }
 }
 
